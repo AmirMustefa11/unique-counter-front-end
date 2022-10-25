@@ -3,7 +3,7 @@ import Header from "./components/Navbar";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import Form from "react-bootstrap/Form";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Background from "./assets/pic.jpg";
 import ResultCard from "./components/ResultCard";
@@ -21,7 +21,7 @@ function App() {
     const formData = new FormData();
     formData.append("file", selectedFile);
     try {
-      const response = await axios({
+       axios({
         method: "post",
         mode: "cors",
         url: "https://unique-counter.herokuapp.com/count",
@@ -45,9 +45,6 @@ function App() {
   const handleFileSelect = (event) => {
     setSelectedFile(event.target.files[0]);
   };
-  useEffect(() => {
-    handleSubmit();
-  }, []);
 
   if (!uploaded) {
     return (
